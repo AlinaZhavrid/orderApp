@@ -20,8 +20,6 @@ target/
 *.ipr
 
 .env
-src/main/java/com/alina/orderapp/controller/WebController.java
-src/main/resources/templates/index.html
 
 ### NetBeans ###
 /nbproject/private/
