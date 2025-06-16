@@ -3,12 +3,12 @@ package com.alina.orderapp.controler;
 import com.alina.orderapp.model.Order;
 import com.alina.orderapp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,11 +39,12 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAllOrders(){
-        List<Order> orders=orderService.getAllOrders();
+    public ResponseEntity<Page<Order>> getAllOrdersPageble(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size){
+        Page<Order>orders=orderService.getAllOrders(page,size);
         return ResponseEntity.ok(orders);
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable UUID id,
