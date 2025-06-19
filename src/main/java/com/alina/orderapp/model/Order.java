@@ -19,10 +19,10 @@ public class Order {
     private Double amount;
 
     @Column(nullable = false)
-    private String customer_name;
+    private String customerName;
 
     @Column(nullable = false)
-    private String customer_email;
+    private String customerEmail;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
@@ -35,8 +35,8 @@ public class Order {
     public Order(String description, Double amount,String customer_name,String customer_email,OrderStatus orderStatus) {
         this.description = description;
         this.amount = amount;
-        this.customer_name=customer_name;
-        this.customer_email=customer_email;
+        this.customerName=customer_name;
+        this.customerEmail=customer_email;
         this.status=orderStatus;
     }
 
@@ -51,8 +51,8 @@ public class Order {
     public void setAmount(Double amount){
         this.amount=amount;
     }
-    public void setCustomerName(String customer_name){this.customer_name=customer_name;}
-    public void setCustomerEmail(String customerEmail){this.customer_email=customer_email;}
+    public void setCustomerName(String customerName){this.customerName=customerName;}
+    public void setCustomerEmail(String customerEmail){this.customerEmail=customerEmail;}
     public void setStatus(OrderStatus status){this.status=status;}
 
     public UUID getId(){
@@ -65,8 +65,8 @@ public class Order {
         return amount;
     }
     public LocalDateTime getCreatedAt(){return createdAt;}
-    public String getCustomerName(){return customer_name;}
-    public String getCustomerEmail(){return customer_email;}
+    public String getCustomerName(){return customerName;}
+    public String getCustomerEmail(){return customerEmail;}
     public OrderStatus getStatus(){return status;}
 
 }

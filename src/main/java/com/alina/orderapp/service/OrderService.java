@@ -81,6 +81,7 @@ public class OrderService {
     }
 
     private void validateOrder(Order order) {
+        System.out.println(order);
         if (order == null) {
             throw new IllegalArgumentException("Order cannot be null");
         }
@@ -93,7 +94,7 @@ public class OrderService {
         if (order.getCustomerName() == null || order.getCustomerName().isBlank()) {
             throw new IllegalArgumentException("Customer name cannot be empty");
         }
-        if (order.getCustomerEmail() == null || order.getCustomerEmail().isBlank()) {
+        if (order.getCustomerEmail() == null ) {
             throw new IllegalArgumentException("Customer email cannot be empty");
         }
         if (order.getStatus() != null && !isValidStatus(order.getStatus())) {
