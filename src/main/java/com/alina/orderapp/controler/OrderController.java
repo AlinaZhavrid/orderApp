@@ -1,14 +1,16 @@
 package com.alina.orderapp.controler;
 
 import com.alina.orderapp.model.Order;
+import com.alina.orderapp.model.OrderStatus;
 import com.alina.orderapp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -39,10 +41,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Order>> getAllOrdersPageble(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size){
-        Page<Order>orders=orderService.getAllOrders(page,size);
+    public ResponseEntity<List<Order>> getAllOrders(){
+        List<Order> orders=orderService.getAllOrders();
         return ResponseEntity.ok(orders);
     }
 
@@ -57,5 +57,14 @@ public class OrderController {
     public ResponseEntity<Void> deleteOrder(@PathVariable UUID id){
         orderService.deleteOrder(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Order> updateOrderStatus(
+            @PathVariable UUID id,
+            @RequestParam OrderStatus status) {
+
+        Order updatedOrder = orderService.updateOrderStatus(id, status);
+        return ResponseEntity.ok(updatedOrder);
     }
 }

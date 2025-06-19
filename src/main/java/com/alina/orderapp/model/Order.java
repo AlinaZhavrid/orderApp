@@ -19,14 +19,25 @@ public class Order {
     private Double amount;
 
     @Column(nullable = false)
+    private String customer_name;
+
+    @Column(nullable = false)
+    private String customer_email;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public Order() {
-    }
+    public Order() {}
 
-    public Order(String description, Double amount) {
+    public Order(String description, Double amount,String customer_name,String customer_email,OrderStatus orderStatus) {
         this.description = description;
         this.amount = amount;
+        this.customer_name=customer_name;
+        this.customer_email=customer_email;
+        this.status=orderStatus;
     }
 
     @PrePersist
@@ -40,6 +51,9 @@ public class Order {
     public void setAmount(Double amount){
         this.amount=amount;
     }
+    public void setCustomerName(String customer_name){this.customer_name=customer_name;}
+    public void setCustomerEmail(String customerEmail){this.customer_email=customer_email;}
+    public void setStatus(OrderStatus status){this.status=status;}
 
     public UUID getId(){
         return id;
@@ -51,5 +65,8 @@ public class Order {
         return amount;
     }
     public LocalDateTime getCreatedAt(){return createdAt;}
+    public String getCustomerName(){return customer_name;}
+    public String getCustomerEmail(){return customer_email;}
+    public OrderStatus getStatus(){return status;}
 
 }
