@@ -44,6 +44,7 @@ public class Order {
     protected void onCreate(){
         this.createdAt=LocalDateTime.now();
     }
+
     public void setId(UUID id){this.id=id;}
     public void setDescription(String description){
         this.description=description;
@@ -54,6 +55,7 @@ public class Order {
     public void setCustomerName(String customerName){this.customerName=customerName;}
     public void setCustomerEmail(String customerEmail){this.customerEmail=customerEmail;}
     public void setStatus(OrderStatus status){this.status=status;}
+    public void setCreatedAt(LocalDateTime createdAt){this.createdAt=createdAt;}
 
     public UUID getId(){
         return id;

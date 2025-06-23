@@ -47,6 +47,9 @@ public class OrderService {
         }
         Order existingOrder=getOrderById(id);
 
+        if (orderUpdates.getCreatedAt() != null) {
+            existingOrder.setCreatedAt(orderUpdates.getCreatedAt());
+        }
         if (orderUpdates.getDescription() != null) {
             existingOrder.setDescription(orderUpdates.getDescription());
         }
@@ -81,7 +84,6 @@ public class OrderService {
     }
 
     private void validateOrder(Order order) {
-        System.out.println(order);
         if (order == null) {
             throw new IllegalArgumentException("Order cannot be null");
         }
@@ -94,7 +96,7 @@ public class OrderService {
         if (order.getCustomerName() == null || order.getCustomerName().isBlank()) {
             throw new IllegalArgumentException("Customer name cannot be empty");
         }
-        if (order.getCustomerEmail() == null ) {
+        if (order.getCustomerEmail() == null || order.getCustomerName().isBlank()) {
             throw new IllegalArgumentException("Customer email cannot be empty");
         }
         if (order.getStatus() != null && !isValidStatus(order.getStatus())) {

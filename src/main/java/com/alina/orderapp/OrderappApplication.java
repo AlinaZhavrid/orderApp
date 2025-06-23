@@ -9,7 +9,7 @@ public class OrderappApplication {
 	public static void main(String[] args) {
 		Dotenv dotenv = Dotenv.configure()
 				.ignoreIfMissing()
-				.load();
+					.load();
 
 		dotenv.entries().forEach(e ->
 				System.setProperty(e.getKey(), e.getValue()));
