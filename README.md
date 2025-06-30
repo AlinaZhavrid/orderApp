@@ -74,7 +74,7 @@ SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/orders_db  # JDBC URL для п�
 SPRING_DATASOURCE_USERNAME=postgres       # Логин для подключения Spring приложения
 SPRING_DATASOURCE_PASSWORD=postgres       # Пароль для подключения Spring приложения
 ```
-Приложение будет доступно по адресу: http://localhost:8080/orders
+Приложение будет доступно по адресу: `http://localhost:8080/orders`
 
 ##  healthcheck endpoint 
 Healthcheck endpoint в Spring Boot Actuator будет доступен по стандартному URL:
